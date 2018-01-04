@@ -1,0 +1,7 @@
+Unit 08 Readme
+
+The files in this subdirectory represent instructor solutions to the programming exercises in this unit. There are definitely other, possibly better, ways to solve the problems presented in the exercises. 
+
+Use these for inspiration, if necessary. If using these for a programming class, be sure to not copy my code. 
+
+Think about the problem and try various approaches before looking at anyone else's code. Break difficult problems into smaller problems. Break those into still smaller problems until each smallest problem is easily solved. The larger problem is solved by passing results of the smaller problems back up the chain.
