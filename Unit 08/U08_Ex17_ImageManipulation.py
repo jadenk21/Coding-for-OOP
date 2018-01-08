@@ -47,9 +47,8 @@
 #       draw a vertical separator line between menu and image space
 #
 #   handleKeys:
-#       Ctrl/Command O  -> loadImage()
-#       Ctrl/Command S  -> saveImage()
-#       Esc             -> quit
+#       O  -> loadImage()
+#       S  -> saveImage()
 #
 #   handleClicks:
 #       call buttonClicked()
@@ -242,13 +241,26 @@ def drawMenu():
 
 #   handleKeys:
 def handleKeys(key):
-    pass
-#       Ctrl/Command O  -> loadImage()
-#       Ctrl/Command S  -> saveImage()
-#       Esc             -> quit
-#
+    """
+    Handles keys pressed to execute menu options (except ESC)
+    :param key: str -> key that was pressed
+    :return: None
+    """
+    # O  -> loadImage()
+    if key == "o" or key == "O":
+        loadImage()
+
+    # S  -> saveImage()
+    if key == "s" or key == "S":
+        saveImage()
+
 #   handleClicks:
 def handleClicks(pt):
+    """
+    Handles valid mouse clicks, executing button actions
+    :param pt: Point -> location of mouse click as a Point object
+    :return: int -> 0 if Quit button clicked; otherwise 1
+    """
     global buttonLoadActive, buttonSaveActive, buttonQuitActive, buttonGrayActive, \
         buttonNegActive, buttonOther1Active, buttonOther2Active, buttonOther3Active
     # call buttonClicked()
@@ -282,11 +294,11 @@ def handleClicks(pt):
 
 #   buttonClicked:
 def buttonClicked(pt):
-    '''
+    """
     Checks to see if a button was clicked
-    :param pt: Point of mouse click
-    :return: global constant matching button clicked; zero if none
-    '''
+    :param pt: Point -> location of mouse click as a Point object
+    :return: int -> global constant matching button clicked; zero if none
+    """
     # test to see if pt is on a button; return appropriate global constant (or zero)
     #     if ptX is within x coords AND ptY is within y coords for this button return global var for button
     #     otherwise, return 0
@@ -337,6 +349,12 @@ def buttonClicked(pt):
     return retVal
 
 def buttonFillToggle(button, buttonFillActive):
+    """
+    Toggles button fill color when clicked
+    :param button: Rectangle -> button as a Rectangle object
+    :param buttonFillActive: boolean -> current state of button
+    :return: boolean -> toggled state for button
+    """
     if buttonFillActive:
         button.setFill(color=buttonIdleFill)
         return False
@@ -345,6 +363,10 @@ def buttonFillToggle(button, buttonFillActive):
 
 #   loadImage:
 def loadImage():
+    """
+    Loads a user-specified image file from disk
+    :return: None
+    """
     global img, imgHeight, imgWidth, imgOrig
     img.undraw()
 
@@ -367,6 +389,10 @@ def loadImage():
 
 #   saveImage:
 def saveImage():
+    """
+    Saves the image to disk with user-specified path
+    :return: None
+    """
     global img
     # save image using asksavefilename from tkinter.filedialog
     imgNew = asksaveasfilename()
@@ -378,6 +404,10 @@ def saveImage():
 
 #   grayscale:
 def grayscale():
+    """
+    Converts image to grayscale (or back to previous state if already grayscale)
+    :return: None
+    """
     global img, imgOrig, isGrayscale
     # if already grayscale
     if isGrayscale:
@@ -408,6 +438,10 @@ def grayscale():
 
 #   negative:
 def negative():
+    """
+    Converts image to color-negative
+    :return: None
+    """
     global img
     # convert pixels to color negative
     #     using image width and height, get pixel rgb values and set to color negative
