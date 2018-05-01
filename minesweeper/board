@@ -1,1 +1,34 @@
+# Board.py
+from Tile import Tile
 
+
+class Board:
+    def __init__(self, h, w, m):
+        self.height = h
+        self.width = w
+        self.mines = m
+        self.tileList = []
+
+    def getTile(self, x, y):
+        return self.tileList[y][x]
+
+    def createTiles(self):
+        """
+        Creates an array inside of an array that works like a coordinate plan when looking for the different tiles
+
+        Note: If you want to reference a tile in the coordinate plane it will be list[y][x]
+        :return: None
+        """
+        for y in range(self.height):
+            rowList = []
+            for x in range(self.width):
+                tile = Tile()
+                rowList.append(tile)
+            self.tileList.append(rowList)
+
+
+def main():
+    board = Board(25, 25, 5)
+    board.createTiles()
+
+main()
