@@ -1,1 +1,53 @@
+# tile.py
+
+class Tile:
+    def __init__(self):
+        self.activated = False
+        self.surrounding = None
+        self.flagged = False
+        self.mine = False
+
+    def setFlag(self, x):
+        """
+        sets flag status
+        :param x: bool
+        :return: none
+        """
+        self.flagged = x
+
+    def setState(self, x):
+        """
+        sets activation state
+        :param x: bool
+        :return: none
+        """
+        self.activated = x
+
+    def isActivated(self):
+        return self.activated
+
+    def isFlagged(self):
+        return self.flagged
+
+    def setMine(self, x):
+        """
+        sets mine status
+        :param x: bool
+        :return: none
+        """
+        self.mine = x
+
+    def hasMine(self):
+        return self.mine
+
+    def setSurrounding(self, x):
+        """
+        sets amount of surrounding mines
+        :param x: int
+        :return: none
+        """
+        self.surrounding = x
+
+    def getSurrounding(self):
+        return self.surrounding
 
